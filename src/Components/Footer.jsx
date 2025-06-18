@@ -91,20 +91,25 @@ const Footer = (props) => {
     <>
     <div className='bg-zinc-700 text-white flex justify-center flex-col items-center p-4' style={{position:'sticky', bottom:'0px', left:'0px'}}>
         {/* This div is for bar for the song */}
-          <div>{props.currentPlayingName}</div>
-          <div className="flex">
-            <span className="mr-4">
-              {formatTime(props.currentPlaying ? props.currentPlaying.currentTime : previousPlaying? previousPlaying.currentTime : 0)}
+          <div className="mb-3 text-center">{props.currentPlayingName}</div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center w-full gap-2">
+            <span className="text-sm text-center sm:text-center sm:mr-4">
+              {formatTime(props.currentPlaying ? props.currentPlaying.currentTime : previousPlaying ? previousPlaying.currentTime : 0)}
             </span>
-            <div>
-                {/* <input type="range" style={{width: '80vw'}} step={0.1} value={ props.currentPlaying? (parseInt(props.currentPlaying.currentTime/props.currentPlaying.duration)*100): 0}/> */}
-                <input type="range" style={{width: '80vw'}} step={0.1} value={ progress } onChange={(e)=>handleChangeDuration(e.target.value)} className="cursor-pointer"/>
-            </div>
-            <span className="ml-4">
-              {formatTime(props.currentPlaying ? props.currentPlaying.duration : previousPlaying? previousPlaying.duration : 0)}
+
+            <input
+              type="range"
+              step={0.1}
+              value={progress}
+              onChange={(e) => handleChangeDuration(e.target.value)}
+              className="cursor-pointer flex-grow w-full sm:w-[60vw]"
+            />
+
+            <span className="text-sm text-center sm:text-center sm:mr-4">
+              {formatTime(props.currentPlaying ? props.currentPlaying.duration : previousPlaying ? previousPlaying.duration : 0)}
             </span>
           </div>
-
 
         <div className='flex'>
             <FaStepBackward size={50} onClick={backward} className="cursor-pointer"/>
