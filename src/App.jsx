@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Container from "./Components/Container"
 import Footer from "./Components/Footer"
-import Navbar from "./components/Navbar"
+import Navbar from "./Components/Navbar"
 
 function App() {
   const songs = [
